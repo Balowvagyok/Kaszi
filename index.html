@@ -1,253 +1,252 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betszámoló</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0f0f0f;
-            color: #ffffff;
-        }
+  <meta charset="UTF-8">
+  <title>Betszámoló</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      min-height: 100vh;
+    }
 
-        .top-right-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
+    .top-right-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
 
-        .top-right-button a button {
-            background-color: #000;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 0 5px white;
-            cursor: pointer;
-            transition: box-shadow 0.3s ease;
-        }
+    .top-right-button a button {
+      background-color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0 0 5px white;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
 
-        .top-right-button a button:hover {
-            box-shadow: 0 0 10px white;
-        }
+    .top-right-button a button:hover {
+      box-shadow: 0 0 10px white;
+    }
 
-        .top-right-button img {
-            height: 30px;
-            width: auto;
-        }
+    .top-right-button img {
+      height: 30px;
+      width: auto;
+    }
 
-        .center-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 80px 20px 40px;
-            flex-wrap: wrap;
-        }
+    .center-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 30px;
+      padding: 80px 20px 20px;
+      flex-wrap: wrap;
+    }
 
-        .container,
-        .percent-container {
-            background-color: #1a1a1a;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-            width: 100%;
-            max-width: 500px;
-        }
+    .container, .percent-container {
+      background-color: #1a1a1a;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            text-align: center;
-            color: #66f9da;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
+    h1 {
+      text-align: center;
+      color: #66f9da;
+      margin-bottom: 30px;
+      font-size: 1.5em;
+    }
 
-        label {
-            margin-top: 15px;
-            font-weight: bold;
-            display: block;
-            color: #ccc;
-            font-size: 1rem;
-        }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #ccc;
+    }
 
-        input,
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: none;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
+    input, button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
 
-        input {
-            background-color: #2a2a2a;
-            color: #fff;
-        }
+    input {
+      background-color: #2a2a2a;
+      color: #fff;
+    }
 
-        button {
-            background-color: #66f9da;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
+    button {
+      background-color: #66f9da;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
 
-        button:hover {
-            background-color: #4ae2c1;
-        }
+    button:hover {
+      background-color: #4ae2c1;
+    }
 
-        #result {
-            width: 94%;
-            min-height: 250px;
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #333;
-            padding: 15px;
-            background-color: #121212;
-            border-radius: 5px;
-            margin-top: 10px;
-            white-space: pre-wrap;
-            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
-            font-size: 0.95rem;
-        }
+    #result {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #333;
+      padding: 15px;
+      background-color: #121212;
+      border-radius: 5px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
+    }
 
-        .normal-line {
-            color: #f1f1f1;
-            padding: 2px 0;
-        }
+    .normal-line {
+      color: #f1f1f1;
+      padding: 2px 0;
+    }
 
-        .exceed-line {
-            color: #ff4d4f;
-            font-weight: bold;
-            padding: 2px 0;
-        }
+    .exceed-line {
+      color: #ff4d4f;
+      font-weight: bold;
+      padding: 2px 0;
+    }
 
-        #percentResult {
-            margin-top: 15px;
-            font-weight: bold;
-            color: #66f9da;
-        }
+    #percentResult {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #66f9da;
+      text-align: center;
+    }
 
-        /* Mobil reszponzivitás */
-        @media (max-width: 768px) {
-            .center-wrapper {
-                flex-direction: column;
-                padding: 60px 15px 30px;
-                width: 18rem;
-            }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
 
-            h1 {
-                font-size: 2rem;
-            }
-
-            label {
-                font-size: 1.1rem;
-            }
-
-            input,
-            button {
-                font-size: 1.2rem;
-                padding: 16px;
-            }
-
-            #result {
-                font-size: 1.1rem;
-            }
-
-            #percentResult {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+      input, button {
+        font-size: 1.1em;
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-right-button">
-        <a href="https://shuffle.com/" target="_blank">
-            <button><img src="logo-small.svg" alt="Shuffle"></button>
-        </a>
-        <a href="https://stake.games/" target="_blank">
-            <button><img src="stake-logo-white.png" alt="Stake"></button>
-        </a>
+  <div class="top-right-button">
+    <a href="https://shuffle.com/" target="_blank">
+      <button><img src="logo-small.svg" alt="Shuffle"></button>
+    </a>
+    <a href="https://stake.games/" target="_blank">
+      <button><img src="stake-logo-white.png" alt="Stake"></button>
+    </a>
+  </div>
+
+  <div class="center-wrapper">
+    <div class="container">
+      <h1>Betszámoló</h1>
+
+      <label for="balance">Balance:</label>
+      <input type="number" id="balance" step="any">
+
+      <label for="startBet">Kezdő Bet:</label>
+      <input type="number" id="startBet" step="any">
+
+      <label for="increasePercent">Százalékos Növelés (%):</label>
+      <input type="number" id="increasePercent" step="any">
+
+      <button onclick="calculateBets()">Számolás</button>
+
+      <label for="result">Eredmény:</label>
+      <div id="result"></div>
     </div>
 
-    <div class="center-wrapper">
-        <div class="container">
-            <h1>Betszámoló</h1>
-            <label for="balance">Balance:</label>
-            <input type="number" id="balance" step="any">
-            <label for="startBet">Kezdő Bet:</label>
-            <input type="number" id="startBet" step="any">
-            <label for="increasePercent">Százalékos Növelés (%):</label>
-            <input type="number" id="increasePercent" step="any">
-            <button onclick="calculateBets()">Számolás</button>
-            <label for="result">Eredmény:</label>
-            <div id="result"></div>
-        </div>
+    <div class="percent-container">
+      <h1>Százalékszámító</h1>
 
-        <div class="percent-container">
-            <h1>Százalékszámító</h1>
-            <label for="percentBalance">Kezdő Balance:</label>
-            <input type="number" id="percentBalance" step="any">
-            <label for="percentBet">Kezdő Bet:</label>
-            <input type="number" id="percentBet" step="any">
-            <button onclick="calculatePercentage()">Számolás</button>
-            <div id="percentResult"></div>
-        </div>
+      <label for="percentBalance">Kezdő Balance:</label>
+      <input type="number" id="percentBalance" step="any">
+
+      <label for="percentBet">Kezdő Bet:</label>
+      <input type="number" id="percentBet" step="any">
+
+      <label for="percentValue">Százalék (%):</label>
+      <input type="number" id="percentValue" step="any">
+
+      <div id="percentResult"></div>
     </div>
+  </div>
 
-    <script>
-        function calculateBets() {
-            const balance = parseFloat(document.getElementById('balance').value);
-            const startBet = parseFloat(document.getElementById('startBet').value);
-            const increasePercent = parseFloat(document.getElementById('increasePercent').value);
-            const resultArea = document.getElementById('result');
-            resultArea.innerHTML = '';
+  <script>
+    function calculateBets() {
+      const balance = parseFloat(document.getElementById('balance').value);
+      const startBet = parseFloat(document.getElementById('startBet').value);
+      const increasePercent = parseFloat(document.getElementById('increasePercent').value);
+      const resultArea = document.getElementById('result');
 
-            if (isNaN(balance) || isNaN(startBet) || isNaN(increasePercent) || balance <= 0 || startBet <= 0) {
-                resultArea.innerHTML = '<div class="exceed-line">Kérlek adj meg érvényes értékeket!</div>';
-                return;
-            }
+      resultArea.innerHTML = '';
 
-            let currentBet = startBet;
-            let total = 0;
-            let index = 1;
+      if (isNaN(balance) || isNaN(startBet) || isNaN(increasePercent) || balance <= 0 || startBet <= 0) {
+        resultArea.innerHTML = '<div class="exceed-line">Kérlek adj meg érvényes értékeket!</div>';
+        return;
+      }
 
-            while (total + currentBet <= balance) {
-                const line = document.createElement('div');
-                line.className = 'normal-line';
-                line.textContent = `Tét ${index}: ${currentBet.toFixed(2)} (összesen: ${(total + currentBet).toFixed(2)})`;
-                resultArea.appendChild(line);
-                total += currentBet;
-                currentBet += currentBet * (increasePercent / 100);
-                index++;
-            }
+      let currentBet = startBet;
+      let total = 0;
+      let index = 1;
 
-            const exceedLine = document.createElement('div');
-            exceedLine.className = 'exceed-line';
-            exceedLine.textContent = `Tét ${index}: ${currentBet.toFixed(2)} (összesen: ${(total + currentBet).toFixed(2)}) - Nem fér bele a balance-ba`;
-            resultArea.appendChild(exceedLine);
-        }
+      while (total + currentBet <= balance) {
+        const line = document.createElement('div');
+        line.className = 'normal-line';
+        line.textContent = `Tét ${index}: ${currentBet.toFixed(2)} (összesen: ${(total + currentBet).toFixed(2)})`;
+        resultArea.appendChild(line);
+        total += currentBet;
+        currentBet += currentBet * (increasePercent / 100);
+        index++;
+      }
 
-        function calculatePercentage() {
-            const balance = parseFloat(document.getElementById('percentBalance').value);
-            const bet = parseFloat(document.getElementById('percentBet').value);
-            const result = document.getElementById('percentResult');
+      const exceedLine = document.createElement('div');
+      exceedLine.className = 'exceed-line';
+      exceedLine.textContent = `Tét ${index}: ${currentBet.toFixed(2)} (összesen: ${(total + currentBet).toFixed(2)}) - Nem fér bele a balance-ba`;
+      resultArea.appendChild(exceedLine);
+    }
 
-            if (isNaN(balance) || isNaN(bet) || balance <= 0 || bet <= 0) {
-                result.textContent = 'Érvénytelen értékek!';
-                return;
-            }
+    const balanceInput = document.getElementById('percentBalance');
+    const betInput = document.getElementById('percentBet');
+    const percentInput = document.getElementById('percentValue');
+    const result = document.getElementById('percentResult');
 
-            const percentage = (bet / balance) * 100;
-            result.textContent = `A BetSize a Balance ${percentage.toFixed(2)}%-a`;
-        }
-    </script>
+    betInput.addEventListener('input', () => {
+      const balance = parseFloat(balanceInput.value);
+      const bet = parseFloat(betInput.value);
+      if (balance > 0 && bet >= 0) {
+        const percent = (bet / balance) * 100;
+        percentInput.value = percent.toFixed(2);
+        result.textContent = `A BetSize a Balance ${percent.toFixed(2)}%-a`;
+      }
+    });
+
+    percentInput.addEventListener('input', () => {
+      const balance = parseFloat(balanceInput.value);
+      const percent = parseFloat(percentInput.value);
+      if (balance > 0 && percent >= 0) {
+        const bet = (percent / 100) * balance;
+        betInput.value = bet.toFixed(2);
+        result.textContent = `A BetSize a Balance ${percent.toFixed(2)}%-a`;
+      }
+    });
+  </script>
 </body>
 </html>
